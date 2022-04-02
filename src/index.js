@@ -1,17 +1,27 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import { createRoot } from "react-dom/client";
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { Home } from "./pages/Home"
+import { Characters } from "./pages/Characters"
+import { Favorites} from "./pages/Favorites"
 
-ReactDOM.render(
+//this is to allign with React 18
+const rootElement = document.getElementById("root");
+const root = createRoot(rootElement);
+
+//Read more about Switch statements.
+root.render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <BrowserRouter>
+      <Routes>
+          <Route path="/" element={<App />}>
+            <Route path="/" element={<Home />}/>
+            <Route path="characters" element={<Characters />}/>
+            <Route path="favorites" element={<Favorites />}/>
+          </Route>
+      </Routes>
+    </BrowserRouter>
+  </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
