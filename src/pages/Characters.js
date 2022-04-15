@@ -1,10 +1,52 @@
+import {requestData} from "../scripts/api_calls"
 import { Container } from "../components/styled/Container";
+import { CharacterComponent } from "../components/CharacterComponent";
+import { CharactersWrapper } from "../components/styled/CharacterCard.styled"
+import { useState, useEffect } from "react";
 
 export const Characters = () => {
+    const [charactersList, setCharacterList] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [error, setError] = useState(false)
+    
+    useEffect(() => {
+        let mounted = true
+        setIsLoading(true)
+        
+        let request = requestData()
+        request.then(res => {
+            if(mounted){
+                setCharacterList(res.results)
+                setIsLoading(false)
+            }
+        }).catch(err => {
+            console.log(err)
+            setError(true)
+        })
+
+        return () => { mounted = false } //to avoid memory leaks when component is unmounted before we could bring api data
+    }, [])
+    
+    if(isLoading){
+        return (
+            <Container>
+                <h1>loading...</h1>
+            </Container>
+        )
+    }else if(error){
+        return(
+            <Container>
+                <h1>Something went wrong, try again later.</h1>
+            </Container>
+        )
+    }
+    
     return (
         <Container>
-            <h1>Rick and Morty Characters</h1>
-            <p>This will contain the characters list and some brief info.</p>
+            <CharactersWrapper>
+                {charactersList.map(character => <CharacterComponent key={character.id} character={character} />)}
+            </CharactersWrapper>
         </Container>
-    )
+        )
+        
 }

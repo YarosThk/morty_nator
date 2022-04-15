@@ -1,5 +1,4 @@
-import { NavLink } from "react-router-dom";
-import { NavbarWrapper, NavigationWrapper, NavbarLogo } from "./styled/Navbar.styled";
+import { NavbarWrapper, NavigationWrapper, NavbarLogo, StyledNavLink } from "./styled/Navbar.styled";
 import logo from "../images/nav_logo.png"
 
 export const Navbar = () => {
@@ -7,12 +6,10 @@ export const Navbar = () => {
         <NavbarWrapper>
             <NavbarLogo src={logo}/>
             <NavigationWrapper>
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="characters">Characters</NavLink>
-                <NavLink to="favorites">Favorites</NavLink>
+                <StyledNavLink to="/">Home</StyledNavLink>
+                <StyledNavLink to="characters">Characters</StyledNavLink>
+                <StyledNavLink to="favorites">Favorites</StyledNavLink>
             </NavigationWrapper>
         </NavbarWrapper>
-
     ) 
-
 }
