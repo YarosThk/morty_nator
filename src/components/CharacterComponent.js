@@ -1,9 +1,12 @@
-import { CharacterContainer, ImageWrapper, Image, InfoWrapper, InfoSection, InfoSectionTitle, InfoSectionText } from "./styled/CharacterCard.styled.js"
+import { CharacterContainer, ImageWrapper, Image, InfoWrapper, InfoSection, InfoSectionTitle, InfoSectionText, LikeButton } from "./styled/CharacterCard.styled.js"
+import { FaRegHeart } from "react-icons/fa";
 
 
 
-export const CharacterComponent = ({character}) => {
-
+export const CharacterComponent = ({character, updateFavoritesList, inFavorites}) => {
+    const handleClick = ()=>{
+        updateFavoritesList(character)
+    }
     return(
         <CharacterContainer>
             <ImageWrapper><Image src={character.image} alt="" srcset="" /></ImageWrapper>
@@ -16,6 +19,8 @@ export const CharacterComponent = ({character}) => {
                     <InfoSectionTitle>Location:</InfoSectionTitle>
                     <InfoSectionText >{character.location.name}</InfoSectionText>
                 </InfoSection>
+                {/* <button onClick={handleClick}><FaRegHeart/></button> */}
+                <LikeButton inFavorites={inFavorites} onClick={handleClick}><FaRegHeart /></LikeButton>
             </InfoWrapper>
         </CharacterContainer>
     )

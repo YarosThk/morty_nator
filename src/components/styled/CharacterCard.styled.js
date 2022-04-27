@@ -80,4 +80,10 @@ export const Image = styled.img`
     } 
 `
 
+export const LikeButton = styled.button`
+    background-color: ${({inFavorites}) => inFavorites ? "red" : "green"};
+    color: white;
+
+`
+
 

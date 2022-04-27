@@ -2,9 +2,10 @@ import {requestData} from "../scripts/api_calls"
 import { Container } from "../components/styled/Container";
 import { CharacterComponent } from "../components/CharacterComponent";
 import { CharactersWrapper } from "../components/styled/CharacterCard.styled"
-import { useState, useEffect } from "react";
+import { useState, useEffect} from "react";
 
-export const Characters = () => {
+
+export const Characters = ({updateFavoritesList}) => {
     const [charactersList, setCharacterList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -44,7 +45,7 @@ export const Characters = () => {
     return (
         <Container>
             <CharactersWrapper>
-                {charactersList.map(character => <CharacterComponent key={character.id} character={character} />)}
+                {charactersList.map(character => <CharacterComponent key={character.id} inFavorites = {character.inFavorites} character={character} updateFavoritesList={updateFavoritesList} />)}
             </CharactersWrapper>
         </Container>
         )
