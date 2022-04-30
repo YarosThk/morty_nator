@@ -1,10 +1,8 @@
-import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Home } from "./pages/Home"
 import { Characters } from "./pages/Characters"
 import { Favorites } from "./pages/Favorites"
-// import { Outlet } from 'react-router-dom';
 import { useState } from 'react';
 
 
@@ -12,7 +10,6 @@ function App() {
   const [favoritesList, setFavoritesList] = useState([])
 
   const addToFavorites = (newCharacter) => {
-    newCharacter.inFavorites = true
     setFavoritesList([...favoritesList, newCharacter])
   }
 
@@ -28,21 +25,25 @@ function App() {
     }else{
       addToFavorites(newCharacter)
     }
-    
+  }
+
+  const inFavoritesCheck = (charToCheck) => {
+    if (favoritesList.some(char => char.id === charToCheck.id)) {
+      return true
+    } else {
+      return false
+    }
   }
 
   return (
-      <div className="App">
         <BrowserRouter>
           <Navbar/>
           <Routes>
             <Route path="/" element={<Home />} />
-          <Route path="characters" element={<Characters updateFavoritesList={updateFavoritesList} />} />
+            <Route path="characters" element={<Characters updateFavoritesList={updateFavoritesList} inFavoritesCheck={inFavoritesCheck}/>} />
             <Route path="favorites" element={<Favorites favorites = {favoritesList}/>} />
           </Routes>
         </BrowserRouter>
-      </div>
-    
   );
 }
 

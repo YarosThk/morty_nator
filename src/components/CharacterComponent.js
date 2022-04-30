@@ -1,12 +1,21 @@
 import { CharacterContainer, ImageWrapper, Image, InfoWrapper, InfoSection, InfoSectionTitle, InfoSectionText, LikeButton } from "./styled/CharacterCard.styled.js"
 import { FaRegHeart } from "react-icons/fa";
+import { useState, useEffect } from "react";
 
 
+export const CharacterComponent = ({character, updateFavoritesList, inFavoritesCheck}) => {
+    const [inFavorites, setInFavorites] = useState(false)
+    const [clicked, setClicked] = useState(false)
 
-export const CharacterComponent = ({character, updateFavoritesList, inFavorites}) => {
     const handleClick = ()=>{
+        clicked ? setClicked(false) : setClicked(true)
         updateFavoritesList(character)
     }
+
+    useEffect(() => {
+        setInFavorites(inFavoritesCheck(character))
+    }, [character, inFavoritesCheck])
+    
     return(
         <CharacterContainer>
             <ImageWrapper><Image src={character.image} alt="" srcset="" /></ImageWrapper>
@@ -19,11 +28,11 @@ export const CharacterComponent = ({character, updateFavoritesList, inFavorites}
                     <InfoSectionTitle>Location:</InfoSectionTitle>
                     <InfoSectionText >{character.location.name}</InfoSectionText>
                 </InfoSection>
-                {/* <button onClick={handleClick}><FaRegHeart/></button> */}
-                <LikeButton inFavorites={inFavorites} onClick={handleClick}><FaRegHeart /></LikeButton>
+                <LikeButton inFavorites={inFavorites} clicked={clicked} onClick={handleClick}><FaRegHeart /></LikeButton>
             </InfoWrapper>
         </CharacterContainer>
     )
 }
 
 
+ 

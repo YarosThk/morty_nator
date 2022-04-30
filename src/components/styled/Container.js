@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    width: 100%;
-    margin: auto;
+    padding: 1.5rem;
     display: flex;
     justify-content: center;
+    align-items: center;
 
-    @media screen and (max-width: 600px) {
-        align-items: center;
+    @media screen and (max-width: 300px) {
+        padding: 0.5rem;
     } 
 `

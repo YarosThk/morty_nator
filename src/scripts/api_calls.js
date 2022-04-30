@@ -9,9 +9,3 @@ export async function requestData(){
         return err
     }
 }
-
-// let data = requestData()
-
-// data.then(res =>console.log("then clause: ", res))
-//     .catch(err => console.log("catch clause: ", err))
-//     .finally(() => console.log("runs regardless"))

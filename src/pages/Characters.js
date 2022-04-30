@@ -2,10 +2,11 @@ import {requestData} from "../scripts/api_calls"
 import { Container } from "../components/styled/Container";
 import { CharacterComponent } from "../components/CharacterComponent";
 import { CharactersWrapper } from "../components/styled/CharacterCard.styled"
+import { Loader } from "../components/Loader";
 import { useState, useEffect} from "react";
 
 
-export const Characters = ({updateFavoritesList}) => {
+export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
     const [charactersList, setCharacterList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(false)
@@ -13,25 +14,24 @@ export const Characters = ({updateFavoritesList}) => {
     useEffect(() => {
         let mounted = true
         setIsLoading(true)
-        
         let request = requestData()
         request.then(res => {
             if(mounted){
                 setCharacterList(res.results)
-                setIsLoading(false)
+                setTimeout(()=>setIsLoading(false),1100)
             }
         }).catch(err => {
             console.log(err)
             setError(true)
         })
 
-        return () => { mounted = false } //to avoid memory leaks when component is unmounted before we could bring api data
+        return () => { mounted = false } //to avoid memory leaks when component is unmounted before we could bring api data, read on that
     }, [])
     
     if(isLoading){
         return (
             <Container>
-                <h1>loading...</h1>
+                <Loader/>
             </Container>
         )
     }else if(error){
@@ -45,7 +45,7 @@ export const Characters = ({updateFavoritesList}) => {
     return (
         <Container>
             <CharactersWrapper>
-                {charactersList.map(character => <CharacterComponent key={character.id} inFavorites = {character.inFavorites} character={character} updateFavoritesList={updateFavoritesList} />)}
+                {charactersList.map(character => <CharacterComponent key={character.id} character={character} inFavoritesCheck={inFavoritesCheck} updateFavoritesList={updateFavoritesList} />)}
             </CharactersWrapper>
         </Container>
         )
