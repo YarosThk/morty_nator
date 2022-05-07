@@ -28,7 +28,7 @@ export const CharacterComponent = ({character, updateFavoritesList, inFavoritesC
                     <InfoSectionTitle>Location:</InfoSectionTitle>
                     <InfoSectionText >{character.location.name}</InfoSectionText>
                 </InfoSection>
-                <LikeButton inFavorites={inFavorites} clicked={clicked} onClick={handleClick}><FaRegHeart /></LikeButton>
+                <LikeButton inFavorites={inFavorites} clicked={clicked} ><FaRegHeart /></LikeButton>
             </InfoWrapper>
         </CharacterContainer>
     )

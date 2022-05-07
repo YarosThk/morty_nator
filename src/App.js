@@ -1,9 +1,28 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
+import GlobalStyle from './components/styled/GlobalStyle';
 import { Navbar } from './components/Navbar';
 import { Home } from "./pages/Home"
 import { Characters } from "./pages/Characters"
 import { Favorites } from "./pages/Favorites"
 import { useState } from 'react';
+
+
+const theme = {
+  colors: {
+    fontColor:{
+      lightText: "#808080"
+    }
+  },
+  fontWeight: {
+    bold: 600,
+    medium: 400,
+    thin: 200,
+  },
+  fontSize: {
+    
+  }
+}
 
 
 function App() {
@@ -36,14 +55,17 @@ function App() {
   }
 
   return (
-        <BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle/>
+      <BrowserRouter>
           <Navbar/>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="characters" element={<Characters updateFavoritesList={updateFavoritesList} inFavoritesCheck={inFavoritesCheck}/>} />
             <Route path="favorites" element={<Favorites favorites = {favoritesList}/>} />
           </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 }
 

@@ -8,7 +8,7 @@ export const NavbarWrapper = styled.div`
 `
 
 export const NavbarLogo = styled.img`
-    width:130px;
+    width:13rem;
 `
 
 export const NavigationWrapper = styled.div`
@@ -17,6 +17,7 @@ export const NavigationWrapper = styled.div`
 `
 
 export const StyledNavLink = styled(NavLink)`
-    padding: 10px;
+    font-size: 2rem;
+    padding: 1rem;
     background-color: lightblue;
 `
