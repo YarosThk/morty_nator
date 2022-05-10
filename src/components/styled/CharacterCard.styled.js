@@ -28,7 +28,7 @@ export const InfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: cadetblue;
+    background-color: #334756;
     border-radius: 0 15px 15px 0;
 
     @media screen and (max-width: 500px) {
@@ -93,9 +93,14 @@ const GrowShrink = keyframes`
 export const LikeButton = styled.button`
     width:30px;
     height: 30px;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    margin-left: auto;
     background-color: ${({inFavorites}) => inFavorites ? "red" : "ghostwhite"};
-    transition: all 0.4s;
+    transition: all 0.3s;
     animation: ${({ clicked }) => clicked &&
                     css`${GrowShrink} 0.12s linear 1`};
     color: ${({ inFavorites }) => inFavorites ? "white" : "black"};
+    border: none;
+    border-radius: 50%;
 `

@@ -63,6 +63,14 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="characters" element={<Characters updateFavoritesList={updateFavoritesList} inFavoritesCheck={inFavoritesCheck}/>} />
             <Route path="favorites" element={<Favorites favorites = {favoritesList}/>} />
+            <Route
+              path="*"
+              element={
+                <main style={{ padding: "1rem" }}>
+                  <p>There's nothing here!</p>
+                </main>
+              }
+            />
           </Routes>
       </BrowserRouter>
     </ThemeProvider>

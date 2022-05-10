@@ -18,7 +18,7 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
         request.then(res => {
             if(mounted){
                 setCharacterList(res.results)
-                setTimeout(()=>setIsLoading(false),1100)
+                setTimeout(()=>setIsLoading(false),500)
             }
         }).catch(err => {
             console.log(err)

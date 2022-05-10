@@ -26,7 +26,22 @@ export const BannerIntroText = styled.div`
 `
 
 export const BannerImage = styled.img`
+    width:100%;
     max-width: 40rem;
     height: auto;
-    box-shadow: 0px 0px 25px 6px rgba(0,0,0,0.68);
+    box-shadow: 0px 0px 25px 6px rgba(0,0,0,0.48);
+
+    @media screen and (max-width: 850px){
+        margin-top: 3rem;
+    }
+`
+
+export const Button = styled.button`
+    width: 20rem;
+    height: 4rem;
+    margin-top: 3rem;
+    background-color: transparent;
+    border: 2.5px solid black;
+    border-radius: 50px;
+    cursor: pointer;
 `

@@ -23,20 +23,26 @@ export const Episode = ({item}) => {
 
         window.addEventListener("scroll", onScroll);
         return () => {
-
+            window.removeEventListener("scroll", onScroll)
         };
     }, [])
 
     return(
         <EpisodeComponent ref={myRef} isVisible={isVisible} >
             <Image src={item.src} />
-            <div>{item.name}</div>
+            <div>
+                <p>{item.name}</p>
+                <p style = {{
+                    fontSize: "1.5rem",
+                    marginTop: "1rem"
+                }}>{item.episode}</p>
+            </div>
         </EpisodeComponent>
     )
 }
 
 export const EpisodesWrapper = styled.div`
-    margin-top: 20rem;
+    margin-top: 5rem;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -48,7 +54,7 @@ export const EpisodeComponent = styled.div`
     margin: 20px;
     position: relative;
     color: white;
-    transform: translateY(${({ isVisible }) => (isVisible ? "0" : "10rem")});
+    transform: translateY(${({ isVisible }) => (isVisible ? "0" : "15rem")});
     opacity: ${({ isVisible }) => (isVisible ? "1" : "0")};
     cursor: pointer;
     transition: transform 1s, opacity 1s;
@@ -58,6 +64,7 @@ export const EpisodeComponent = styled.div`
         height:100%;
         font-size: 3rem;
         display:flex;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
         text-align: center;

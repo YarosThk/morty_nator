@@ -11,7 +11,7 @@ export const Home = () => {
         <Container>
             <MainBanner />
             <EpisodesWrapper>
-                {episodes.map((item, index) => <Episode key={item.id} item={item}/>)}
+                {episodes.map((item) => <Episode key={item.id} item={item}/>)}
             </EpisodesWrapper>
         </Container> 
     )

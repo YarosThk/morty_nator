@@ -1,7 +1,11 @@
-import { MainBannerWrapper, BannerImage, BannerIntroText } from "./styled/MainBannerStyled"
+import { MainBannerWrapper, BannerImage, BannerIntroText, Button } from "./styled/MainBannerStyled"
+import { useNavigate } from "react-router-dom"
+import { } from "./styled/Navbar.styled";
 import homeImage from "../images/banner_image.jpeg"
 
 export const MainBanner = () => {
+    const navigate = useNavigate()
+
     return(
         <MainBannerWrapper>
             <BannerIntroText>
@@ -19,7 +23,7 @@ export const MainBanner = () => {
                 reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
                 deserunt mollit anim id est laborum</p>
-                <button>Explore-{">"}</button>
+                <Button onClick = {() => navigate("/characters")}>Explore</Button>
             </BannerIntroText>
             <BannerImage src={homeImage}/>
         </MainBannerWrapper>

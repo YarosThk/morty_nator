@@ -9,6 +9,7 @@ export const Navbar = () => {
                 <StyledNavLink to="/">Home</StyledNavLink>
                 <StyledNavLink to="characters">Characters</StyledNavLink>
                 <StyledNavLink to="favorites">Favorites</StyledNavLink>
+                <StyledNavLink to="favorites">About</StyledNavLink>
             </NavigationWrapper>
         </NavbarWrapper>
     ) 
