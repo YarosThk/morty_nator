@@ -1,10 +1,23 @@
 //page 42 is the limit
 export async function requestAllCharacters(page){
-    let base_url = `https://rickandmortyapi.com/api/character/?page=${page}`
+    const query = `https://rickandmortyapi.com/api/character/?page=${page}`
     try{
-        let request = await fetch(base_url)
+        console.log(query)
+        let request = await fetch(query)
         return await request.json()
     }catch(err){
+        return err
+    }
+}
+
+export async function filterCharacters(page, filter){
+    const {name, status} = filter
+    const query = `https://rickandmortyapi.com/api/character/?page=${page}&name=${name}&status=${status}`
+    console.log(query)
+    try {
+        let request = await fetch(query)
+        return await request.json()
+    } catch (err) {
         return err
     }
 }

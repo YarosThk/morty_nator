@@ -1,42 +1,58 @@
-import { requestAllCharacters } from "../scripts/api_calls"
+import { requestAllCharacters, filterCharacters } from "../scripts/api_calls"
 import { Container } from "../components/styled/Container";
 import { CharacterComponent } from "../components/CharacterComponent";
+import { Pagination } from "../components/Pagination";
 import { CharactersWrapper } from "../components/styled/CharacterCard.styled"
 import { Loader } from "../components/Loader";
 import { useState, useEffect} from "react";
 
+const WAIT_INTERVAL = 1000
 
 export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
     const [charactersList, setCharacterList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(false)
     const [page, setPage] = useState(1)
+    const [filter, setFilter] = useState(
+        {name: "",
+            status: "",
+            gender: "",
+            species: "",
+            type:""
+        })
+    let timer = null
+
 
     const nextPage = () => {
-        if(page === 42){
-            return null    
-        }else{
-            setPage(page+1)
+        if(!page === 42){
+            setPage(page + 1)
+        }
+    }
+    
+    const previousPage = () => {
+        if(!page === 1){
+            setPage(page - 1)
         }
     }
 
-    const previousPage = () => {
-        if (page === 0){
-            return null
-        }else{
-            setPage(page-1)
-        }
+    const handleInput = (e) => {
+        console.log(e.target.value)
+    }
+
+    const triggerChange = (newValue) => {
+        // clearTimeout(timer);
+        // timer = setTimeout(() => setFilter({ ...filter, name: newValue }), WAIT_INTERVAL);
     }
 
     
     useEffect(() => {
         let mounted = true
         setIsLoading(true)
-        let request = requestAllCharacters(page)
+        let request = filterCharacters(page, filter)
         request.then(res => {
-            if(mounted){
+            if (mounted) {
                 setCharacterList(res.results)
-                setTimeout(()=>setIsLoading(false),500)
+                setTimeout(() => setIsLoading(false), 500)
             }
         }).catch(err => {
             console.log(err)
@@ -62,19 +78,11 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
     
     return (
         <Container>
+            <input type="text" value={filter.name} onChange={handleInput}/>
             <CharactersWrapper>
                 {charactersList.map(character => <CharacterComponent key={character.id} character={character} inFavoritesCheck={inFavoritesCheck} updateFavoritesList={updateFavoritesList} />)}
             </CharactersWrapper>
-
-            <div style={{
-                display: "flex",
-                justifyContent: "space-between",
-                width: "200px"
-            }}>
-                <button onClick={previousPage}>Previous</button>
-                {page}
-                <button onClick={nextPage}>Next</button>
-            </div>
+            <Pagination currentPage={page} nextPage={nextPage} previousPage={previousPage}/>
         </Container>
         )
 }
