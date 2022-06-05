@@ -1,67 +1,85 @@
-import { requestAllCharacters, filterCharacters } from "../scripts/api_calls"
+import { filterCharacters } from "../scripts/api_calls"
 import { Container } from "../components/styled/Container";
 import { CharacterComponent } from "../components/CharacterComponent";
-import { Pagination } from "../components/Pagination";
 import { CharactersWrapper } from "../components/styled/CharacterCard.styled"
+import { PaginationWrapper, CurrentPage, PaginationButton } from "../components/styled/PaginationStyled"
 import { Loader } from "../components/Loader";
 import { useState, useEffect} from "react";
+import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
-const WAIT_INTERVAL = 1000
 
 export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
     const [charactersList, setCharacterList] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [error, setError] = useState(false)
-    const [page, setPage] = useState(1)
+    const [lastPage, setLastPage] = useState(null)
+    const [searchField, setSearchField] = useState("")
     const [filter, setFilter] = useState(
         {name: "",
             status: "",
             gender: "",
             species: "",
-            type:""
+            type:"",
+            page: 1
         })
-    let timer = null
-
 
     const nextPage = () => {
-        if(!page === 42){
-            setPage(page + 1)
+        if(filter.page !== lastPage){
+            let newPage = filter.page + 1
+            setFilter({ ...filter, page: newPage })
         }
+
     }
     
     const previousPage = () => {
-        if(!page === 1){
-            setPage(page - 1)
+        if(filter.page !== 1){
+            let newPage = filter.page - 1
+            setFilter({ ...filter, page: newPage })
         }
     }
 
     const handleInput = (e) => {
-        console.log(e.target.value)
+        setSearchField(e.target.value)
     }
 
-    const triggerChange = (newValue) => {
-        // clearTimeout(timer);
-        // timer = setTimeout(() => setFilter({ ...filter, name: newValue }), WAIT_INTERVAL);
+    const applyFilter = () => {
+        setFilter({ ...filter, name: searchField, page: 1 })
     }
 
+    const resetFilter = () => {
+        setFilter({
+            name: "",
+            status: "",
+            gender: "",
+            species: "",
+            type: "",
+            page: 1
+        })
+        setSearchField("")
+    }
     
     useEffect(() => {
         let mounted = true
+        setError(false)
         setIsLoading(true)
-        let request = filterCharacters(page, filter)
+        let request = filterCharacters(filter)
         request.then(res => {
             if (mounted) {
+                console.log(res)
+                setLastPage(res.info.pages)
                 setCharacterList(res.results)
                 setTimeout(() => setIsLoading(false), 500)
             }
         }).catch(err => {
             console.log(err)
             setError(true)
+            setIsLoading(false)
         })
 
         return () => { mounted = false } //to avoid memory leaks when component is unmounted before we could bring api data, read on that
-    }, [page])
-    
+    }, [filter])
+
+
     if(isLoading){
         return (
             <Container>
@@ -71,18 +89,33 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
     }else if(error){
         return(
             <Container>
+                <button onClick={resetFilter}>Reset filter</button>
                 <h1>Something went wrong, try again later.</h1>
             </Container>
         )
     }
-    
-    return (
-        <Container>
-            <input type="text" value={filter.name} onChange={handleInput}/>
-            <CharactersWrapper>
-                {charactersList.map(character => <CharacterComponent key={character.id} character={character} inFavoritesCheck={inFavoritesCheck} updateFavoritesList={updateFavoritesList} />)}
-            </CharactersWrapper>
-            <Pagination currentPage={page} nextPage={nextPage} previousPage={previousPage}/>
-        </Container>
+    if(!charactersList){
+        return(
+            <Container>
+                <button onClick={resetFilter}>Reset filter</button>
+                <h1>Result returned no data.</h1>
+            </Container>
         )
-}
+    }else{
+        return (
+            <Container>
+                <input type="text" value={searchField} onChange={handleInput}/>
+                <button onClick={applyFilter}> search </button>
+                <button onClick={resetFilter}>Reset filter</button>
+                <CharactersWrapper>
+                    {charactersList.map(character => <CharacterComponent key={character.id} character={character} inFavoritesCheck={inFavoritesCheck} updateFavoritesList={updateFavoritesList} />)}
+                </CharactersWrapper>
+                <PaginationWrapper>
+                    <PaginationButton onClick={previousPage}><FaAngleLeft /></PaginationButton>
+                    <CurrentPage>{filter.page}</CurrentPage>
+                    <PaginationButton onClick={nextPage}><FaAngleRight /></PaginationButton>
+                </PaginationWrapper>
+            </Container>
+            )
+        }
+    }
