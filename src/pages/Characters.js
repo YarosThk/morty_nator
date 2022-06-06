@@ -1,6 +1,7 @@
 import { filterCharacters } from "../scripts/api_calls"
 import { Container } from "../components/styled/Container";
 import { CharacterComponent } from "../components/CharacterComponent";
+import { FilterComponent } from "../components/FilterComponent";
 import { CharactersWrapper } from "../components/styled/CharacterCard.styled"
 import { PaginationWrapper, CurrentPage, PaginationButton } from "../components/styled/PaginationStyled"
 import { Loader } from "../components/Loader";
@@ -104,9 +105,7 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
     }else{
         return (
             <Container>
-                <input type="text" value={searchField} onChange={handleInput}/>
-                <button onClick={applyFilter}> search </button>
-                <button onClick={resetFilter}>Reset filter</button>
+                <FilterComponent searchField={searchField} handleInput={handleInput} applyFilter={applyFilter} resetFilter={resetFilter}/>
                 <CharactersWrapper>
                     {charactersList.map(character => <CharacterComponent key={character.id} character={character} inFavoritesCheck={inFavoritesCheck} updateFavoritesList={updateFavoritesList} />)}
                 </CharactersWrapper>
