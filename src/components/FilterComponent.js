@@ -1,14 +1,18 @@
-import { FilterWrapper, InnerWrapper, TextInputField, ControlsWrapper, FilterButton } from "./styled/FilterComponent.styled"
+import { FilterWrapper, InnerWrapper, TextInputField, ControlsWrapper } from "./styled/FilterComponent.styled"
+import { SearchFilter, ResetFilter } from "./Buttons"
+import rick_and_morty_banner from "../images/rick_and_morty_banner.jpeg"
 
 export const FilterComponent = ({searchField, applyFilter, resetFilter, handleInput}) => {
 
     return(
-        <FilterWrapper>
+        <FilterWrapper style={{ backgroundImage: `url(${rick_and_morty_banner})`,
+                                backgroundRepeat: 'no-repeat',
+                                backgroundPosition: 'right'}}>
             <InnerWrapper>
                 <TextInputField type={"text"} value={searchField} onChange={handleInput}/>
                 <ControlsWrapper>
-                    <FilterButton onClick={applyFilter}> Search </FilterButton>
-                    <FilterButton onClick={resetFilter}> Reset </FilterButton>
+                    <SearchFilter onClick={applyFilter}> Search </SearchFilter>
+                    <ResetFilter onClick={resetFilter}> Reset </ResetFilter>
                 </ControlsWrapper>
             </InnerWrapper>
         </FilterWrapper>

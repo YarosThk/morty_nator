@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     sans-serif;
     font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    ${'' /* background-color: rgb(39, 45, 58); */}
   }
 `
 

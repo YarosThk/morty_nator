@@ -35,13 +35,3 @@ export const BannerImage = styled.img`
         margin-top: 3rem;
     }
 `
-
-export const Button = styled.button`
-    width: 20rem;
-    height: 4rem;
-    margin-top: 3rem;
-    background-color: transparent;
-    border: 2.5px solid black;
-    border-radius: 50px;
-    cursor: pointer;
-`

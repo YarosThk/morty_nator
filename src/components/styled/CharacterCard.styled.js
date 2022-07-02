@@ -28,7 +28,8 @@ export const InfoWrapper = styled.div`
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    background-color: #334756;
+    background-color: rgb(37, 44, 58);
+    ${'' /* background-color: rgb(46, 47, 53); */}
     border-radius: 0 15px 15px 0;
 
     @media screen and (max-width: 500px) {

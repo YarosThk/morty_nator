@@ -12,9 +12,11 @@ export const CurrentPage = styled.p`
 
 `
 export const PaginationButton = styled.button`
-    border: none;
-    font-size: 5rem;
-    background: transparent(100)
+    width:5rem;
+    height:5rem;
+    border: 1px solid black;
+    border-radius: 50%;
+    font-size: 3rem;
 
     &:hover{
         cursor: pointer;

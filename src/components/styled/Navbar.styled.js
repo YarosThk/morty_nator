@@ -42,6 +42,10 @@ export const StyledNavLink = styled(NavLink)`
     text-decoration: none;
     color: black;
 
+    &:hover{
+        color: #FFAC1C;
+    }
+
     @media screen and (max-width: 480px){
         font-size: 1.6rem;
         padding: 0.7rem;
@@ -51,4 +55,6 @@ export const StyledNavLink = styled(NavLink)`
         font-size: 1.4rem;
         padding: 0.7;
     }
+
+
 `

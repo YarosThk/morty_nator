@@ -1,4 +1,5 @@
-import { MainBannerWrapper, BannerImage, BannerIntroText, Button } from "./styled/MainBannerStyled"
+import { MainBannerWrapper, BannerImage, BannerIntroText } from "./styled/MainBannerStyled"
+import { Button } from "./Buttons"
 import { useNavigate } from "react-router-dom"
 import { } from "./styled/Navbar.styled";
 import homeImage from "../images/banner_image.jpeg"
