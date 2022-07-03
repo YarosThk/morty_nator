@@ -5,6 +5,7 @@ import { Navbar } from './components/Navbar';
 import { Home } from "./pages/Home"
 import { Characters } from "./pages/Characters"
 import { Favorites } from "./pages/Favorites"
+import { About } from "./pages/About"
 import { useState } from 'react';
 
 
@@ -63,6 +64,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="characters" element={<Characters updateFavoritesList={updateFavoritesList} inFavoritesCheck={inFavoritesCheck}/>} />
             {/* <Route path="favorites" element={<Favorites favorites = {favoritesList}/>} /> */}
+            <Route path="about" element={<About />} />
             <Route
               path="*"
               element={

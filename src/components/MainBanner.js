@@ -17,13 +17,17 @@ export const MainBanner = () => {
                 <p style={{
                     fontSize: "2rem",
                     lineHeight: "3rem",
-                }} >Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-                reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia 
-                deserunt mollit anim id est laborum</p>
+                }} >Rick y Morty (Rick and Morty en Estados Unidos) es una serie de televisión animada estadounidense creada por Justin Roiland y 
+                    Dan Harmon que se estrenó el 2 de diciembre de 2013 en el bloque de programación Adult Swim de Cartoon Network.
+                    <br/>
+                    <br/>
+                    Primera Temporada del programa consta de 11 episodios de veintidós minutos. Después de emitir los primeros seis episodios, Adult Swim renovó el programa para una Segunda Temporada, 
+                    que consta de 10 episodios de veintidós minutos.
+                    El programa se renovó por una Tercera Temporada, que consta de 10 episodios de veintidós minutos que se emitieron en el verano de 2017. A partir del otoño de 2019, Rick y Morty 
+                    regresaron con una Cuarta Temporada transmitiendo diez episodios, siendo la primera mitad de la temporada que salió al aire en 2019 y la segunda mitad el 3 de mayo.
+                    <br/>
+                    <br/>
+                    El programa se basó en una serie de cortometrajes crudamente animados para Channel 101 basados en una parodia de Volver al Futuro Las Verdaderas Aventuras Animadas de Doc y Mharti de Justin Roiland.</p>
                 <Button onClick = {() => navigate("/characters")}>Explore</Button>
             </BannerIntroText>
             <BannerImage src={homeImage}/>
