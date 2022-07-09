@@ -55,6 +55,4 @@ export const StyledNavLink = styled(NavLink)`
         font-size: 1.4rem;
         padding: 0.7;
     }
-
-
 `

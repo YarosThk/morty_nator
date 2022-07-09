@@ -24,7 +24,7 @@ export const MainBanner = () => {
                     Primera Temporada del programa consta de 11 episodios de veintidós minutos. Después de emitir los primeros seis episodios, Adult Swim renovó el programa para una Segunda Temporada, 
                     que consta de 10 episodios de veintidós minutos.
                     El programa se renovó por una Tercera Temporada, que consta de 10 episodios de veintidós minutos que se emitieron en el verano de 2017. A partir del otoño de 2019, Rick y Morty 
-                    regresaron con una Cuarta Temporada transmitiendo diez episodios, siendo la primera mitad de la temporada que salió al aire en 2019 y la segunda mitad el 3 de mayo.
+                    regresaron con una Cuarta Temporada transmitiendo diez episodios.
                     <br/>
                     <br/>
                     El programa se basó en una serie de cortometrajes crudamente animados para Channel 101 basados en una parodia de Volver al Futuro Las Verdaderas Aventuras Animadas de Doc y Mharti de Justin Roiland.</p>

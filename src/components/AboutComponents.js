@@ -1,6 +1,7 @@
-import { AboutBannerWrapper, BannerImage, BannerHeaderText } from "./styled/AboutBanner.styled.js"
+import { AboutBannerWrapper, BannerImage, BannerHeaderText, Paragraph, ParagraphTitle, ParagraphContent } from "./styled/AboutComponent.styled.js"
 import { } from "./styled/Navbar.styled";
 import aboutBanner from "../images/about_banner.png"
+
 
 export const AboutHeader = () => {
     return (
@@ -13,5 +14,16 @@ export const AboutHeader = () => {
                 }} > The Rick and Morty API</h1>
             </BannerHeaderText>
         </AboutBannerWrapper>
+    )
+}
+
+export const AboutTextComponent = ({title, content, link}) => {
+    return (
+        <Paragraph>
+            <ParagraphTitle>{title}</ParagraphTitle>
+            <ParagraphContent>
+                {content}
+            </ParagraphContent>
+        </Paragraph>
     )
 }
