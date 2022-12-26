@@ -18,12 +18,23 @@ export const AboutHeader = () => {
 }
 
 export const AboutTextComponent = ({title, content, link}) => {
-    return (
-        <Paragraph>
-            <ParagraphTitle>{title}</ParagraphTitle>
-            <ParagraphContent>
-                {content}
-            </ParagraphContent>
-        </Paragraph>
-    )
+    if(link){
+        return (
+            <Paragraph>
+                <ParagraphTitle>{title}</ParagraphTitle>
+                <ParagraphContent>
+                    {content} : <a href={link} target = "_blank" rel="noreferrer">API Documentation</a>
+                </ParagraphContent>
+            </Paragraph>
+        )
+    }else{
+        return (
+            <Paragraph>
+                <ParagraphTitle>{title}</ParagraphTitle>
+                <ParagraphContent>
+                    {content}
+                </ParagraphContent>
+            </Paragraph>
+        )
+    }
 }

@@ -66,13 +66,11 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck}) => {
         let request = filterCharacters(filter)
         request.then(res => {
             if (mounted) {
-                console.log(res)
                 setLastPage(res.info.pages)
                 setCharacterList(res.results)
                 setTimeout(() => setIsLoading(false), 500)
             }
         }).catch(err => {
-            console.log(err)
             setError(true)
             setIsLoading(false)
         })
