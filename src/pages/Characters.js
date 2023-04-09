@@ -71,7 +71,8 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck }) => {
         if (mounted) {
           setLastPage(res.info.pages);
           setCharacterList(res.results);
-          setTimeout(() => setIsLoading(false), 500);
+          //setTimeout(() => setIsLoading(false), 500);
+          setIsLoading(false);
         }
       })
       .catch((err) => {
@@ -115,7 +116,6 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck }) => {
           resetFilter={resetFilter}
         />
         <CharactersWrapper>
-          {console.log(charactersList)}
           {charactersList.map((character, index) => (
             <CharacterComponent
               key={character.id}
