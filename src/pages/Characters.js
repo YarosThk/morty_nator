@@ -115,12 +115,14 @@ export const Characters = ({ updateFavoritesList, inFavoritesCheck }) => {
           resetFilter={resetFilter}
         />
         <CharactersWrapper>
-          {charactersList.map((character) => (
+          {console.log(charactersList)}
+          {charactersList.map((character, index) => (
             <CharacterComponent
               key={character.id}
               character={character}
               inFavoritesCheck={inFavoritesCheck}
               updateFavoritesList={updateFavoritesList}
+              data-testid={`character-item-${index}`}
             />
           ))}
         </CharactersWrapper>
