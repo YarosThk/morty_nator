@@ -10,7 +10,7 @@
 
 ## What is Morty_nator
 
-[Morty_nator](mortynator-production.up.railway.app/) is a practise project in order to get familiar with React and Styled Components. It is based on Rick and Morty API \([API page](https://rickandmortyapi.com/documentation/#introduction)\), Fetch API and React Router.
+[Morty_nator](https://mortynator-production.up.railway.app/) is a practise project in order to get familiar with React and Styled Components. It is based on Rick and Morty API \([API page](https://rickandmortyapi.com/documentation/#introduction)\), Fetch API and React Router.
 
 ## Build with
 
