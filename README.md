@@ -1,22 +1,50 @@
-# What is this?
+# Morty_nator
+
+## Table of content
+
+- Description
+- Built with
+- Author
+- Acknowledgements
+- How to get started
+
+## What is Morty_nator
 
 This is a practise project in order to get familiar with React and Styled Components. It is based on Rick and Morty API \([API page](https://rickandmortyapi.com/documentation/#introduction)\), Fetch API and React Router.
 
-# Getting Started with Create React App
+## Build with
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- React
+- React Styled Components
+- React Router
+- Rick and Morty API
 
-## Available Scripts
+## Author
+
+- [Yaroslav Tashak](https://github.com/YarosThk)
+
+## Acknowledgements
+
+- Reddit communities
+- Traversy Media
+- The Odin Project
+
+## Get started
 
 In the project directory, you can run:
+
+### `git clone`
+
+To clone the repository to your local environment
+
+### `npm install`
+
+To install all the required dependencies in the package.json file.
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
 ### `npm test`
 
@@ -42,5 +70,3 @@ If you aren't satisfied with the build tool and configuration choices, you can `
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
